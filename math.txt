@@ -1,0 +1,8 @@
+What is 2 + 2?
+4
+
+Count down from 5 to 1
+5 4 3 2 1
+
+How old are you?
+6

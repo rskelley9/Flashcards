@@ -3,44 +3,34 @@ require_relative 'cards_view'
 
 class CardsController
 
-  attr_reader :card
-  attr_accessor :flashcards, :view
+  attr_reader :card, :flashcards, :view
 
-  def initialize
+  def initialize(file)
     @view = CardsView.new
     @flashcards = Deck.new
-    flashcards.import
+    flashcards.import(file)
     view.welcome
   end
 
-
-
   def run!
-    return view.finished if flashcards.cards.length == 0
+    return view.finished if flashcards.finished?
     pick_a_card
     display_card(card)
     @guess = view.get_user_input
     until correct?(@guess)
+      return if @guess == "exit" || @guess == "quit"
       view.response_incorrect
       display_card(card)
       @guess = view.get_user_input
     end
-    flashcards.cards.shift
     view.response_correct
-    view.new_question
+    flashcards.cards.shift
     run!
-    #else call out_put question until three_strikes?
-  end
-
-  def answered_already
-    #remove displayed card from cards
-    #re-call display card, and get new user input
   end
 
   def pick_a_card
     @card = flashcards.select_card
   end
-
   
   def display_card(card)
     view.display_card(card)
@@ -56,6 +46,4 @@ class CardsController
     end
   end
   
-
-
 end

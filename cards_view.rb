@@ -2,16 +2,12 @@ require_relative 'cards_controller'
 
 class CardsView
 
-  def initialize
-
-  end
-
   def welcome
     puts "Welcome to Ruby Flashcards!"
   end
 
   def finished
-    puts "Good job!  You answered all the questions!"
+    puts "Great job! You answered all the questions!"
   end
 
   def get_user_input
@@ -28,25 +24,21 @@ class CardsView
 
   def new_question
     puts
-    puts "Good job! Next question:"
+    puts "Good job!"
   end
 
   def try_later
     puts "We'll try that one later."
   end
 
-
   def response_correct
     puts
-    puts "Your response was correct!"
-    puts
+    puts "Good job! Your response was correct!"
   end
 
   def response_incorrect
     puts
     puts "Sorry, try again."
-    puts
   end
-
 
 end

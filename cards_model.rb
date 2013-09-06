@@ -7,9 +7,9 @@ class Deck
     @cards = []
   end
 
-  def import
+  def import(file)
     cards = []
-    File.open('flashcard_samples.txt', 'r').each_line do |line|
+    File.open(file, 'r').each_line do |line|
       cards << line
     end
     cards.each_slice(3) do |card|
@@ -19,7 +19,6 @@ class Deck
 
   def select_card
     cards.shuffle![0]
-    # debugger
   end
 
   def finished?
@@ -27,7 +26,6 @@ class Deck
   end
 
 end
-
 
 class Card
   attr_reader :question, :answer, :id
